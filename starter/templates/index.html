@@ -1,18 +1,65 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Sudoku Game</title>
-  <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
-  </div>
-  <script src="/static/main.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sudoku Challenge</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="top-area">
+        <div class="title-wrap">
+          <h1>Sudoku</h1>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <span class="theme-toggle-text">Dark/Light Mode<br>Toggle</span>
+          <span class="theme-icon">☀️</span>
+        </button>
+      </div>
+
+      <div class="game-area">
+        <div class="selector-panel">
+          <label class="difficulty-picker" for="difficulty-select">
+            <span>Difficulty:</span>
+            <select id="difficulty-select">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+          <button id="new-game" class="ghost-btn" type="button">New Game</button>
+        </div>
+
+        <div class="board-stage">
+          <div id="sudoku-board" class="sudoku-board" aria-label="Sudoku board"></div>
+          <div class="timer-box">Time: <span id="timer">00:00</span></div>
+          <p id="message" class="message" aria-live="polite"></p>
+        </div>
+
+        <div class="action-stack">
+          <button id="check-solution" class="pill-button" type="button">Check</button>
+          <button id="hint-button" class="pill-button" type="button">Hint</button>
+        </div>
+      </div>
+
+      <div class="scores-panel">
+        <h2>Top 10 Fastest Times:</h2>
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Time</th>
+              <th>Level</th>
+              <th>Hints</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/static/main.js"></script>
+  </body>
 </html>
